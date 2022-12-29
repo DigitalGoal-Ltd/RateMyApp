@@ -180,11 +180,12 @@ class RateMyApp {
   /// Shows the star rate dialog.
   Future<void> showStarRateDialog(
     BuildContext context, {
-    String? title,
+    Widget? title,
     String? message,
     DialogContentBuilder? contentBuilder,
     StarDialogActionsBuilder? actionsBuilder,
     bool? ignoreNativeDialog,
+    Color? backgroundColor,
     DialogStyle? dialogStyle,
     StarRatingOptions? starRatingOptions,
     VoidCallback? onDismissed,
@@ -205,12 +206,13 @@ class RateMyApp {
 
     RateMyAppStarDialog starRateDialog = RateMyAppStarDialog(
       this,
-      title: title ?? 'Rate this app',
+      title: title ?? Container(),
       message: message ??
           'You like this app ? Then take a little bit of your time to leave a rating :',
       contentBuilder:
           contentBuilder ?? ((context, defaultContent) => defaultContent),
       actionsBuilder: actionsBuilder,
+      backgroundColor: backgroundColor ?? Colors.black,
       dialogStyle: dialogStyle ??
           const DialogStyle(
             titleAlign: TextAlign.center,

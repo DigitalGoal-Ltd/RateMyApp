@@ -125,7 +125,7 @@ class RateMyAppStarDialog extends StatefulWidget {
   final RateMyApp rateMyApp;
 
   /// The dialog's title.
-  final String title;
+  final Widget title;
 
   /// The dialog's message.
   final String message;
@@ -139,6 +139,9 @@ class RateMyAppStarDialog extends StatefulWidget {
   /// The dialog's style.
   final DialogStyle dialogStyle;
 
+  /// BackGround Color
+  final Color backgroundColor;
+
   /// The smooth star rating style.
   final StarRatingOptions starRatingOptions;
 
@@ -151,6 +154,7 @@ class RateMyAppStarDialog extends StatefulWidget {
     required this.contentBuilder,
     this.actionsBuilder,
     required this.dialogStyle,
+    required this.backgroundColor,
     required this.starRatingOptions,
   }) : super(key: key);
 
@@ -206,13 +210,10 @@ class _RateMyAppStarDialogState extends State<RateMyAppStarDialog> {
     );
 
     return AlertDialog(
+      backgroundColor: widget.backgroundColor,
       title: Padding(
         padding: widget.dialogStyle.titlePadding,
-        child: Text(
-          widget.title,
-          style: widget.dialogStyle.titleStyle,
-          textAlign: widget.dialogStyle.titleAlign,
-        ),
+        child: widget.title
       ),
       content: widget.contentBuilder(context, content),
       contentPadding: widget.dialogStyle.contentPadding,
